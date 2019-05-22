@@ -1,0 +1,83 @@
+body
+{
+ 	margin: 0;
+ 	padding: 0;
+ 	background: #182C61;
+}
+
+.button 
+{
+ 	position: absolute;
+ 	top: 50%;
+ 	left: 50%;
+ 	transform: translate(-50%, -50%);
+ 	background: #2f3640;
+ 	height: 40px;
+ 	border-radius: 40px;
+ 	padding: 10px;
+}
+
+.button:hover > .button-txt 
+{
+ 	width: 240px;
+ 	padding: 0 6px;
+}
+
+.buttona:hover > .button-btn {
+ background: white;
+ color: black;
+}
+
+.button-btn 
+{
+ 	color: #182C61;
+ 	float: right;
+ 	width: 40px;
+ 	height: 40px;
+ 	border-radius: 50%;
+ 	background: #2f3640;
+ 	display: flex;
+ 	justify-content: center;
+ 	align-items: center;
+ 	transition: 0.4s;
+ 	color: white;
+ 	cursor: pointer;
+}
+
+.button-btn > i 
+{
+ 	font-size: 30px;
+}	
+
+.button-txt
+ {
+	 border: none;
+	 background: none;
+ 	outline: none;
+ 	float: left;
+ 	padding: 0;
+ 	color: white;
+ 	font-size: 16px;
+ 	transition: 0.4s;
+ 	line-height: 40px;
+ 	width: 0px;
+ 	font-weight: bold;
+}﻿
+
+.txt
+{
+	text-align: center;
+	
+}
+.txt h1
+{
+	color: white;
+	text-transform: uppercase;
+	font-size: 70px;
+	text-align: center;
+	font-family: "serif";
+	width: 1200px;
+	position: absolute;
+ 	top: 20%;
+ 	left: 10%;
+}

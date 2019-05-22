@@ -1,0 +1,124 @@
+<html>
+<head>
+	<title> Rank Test </title>
+    
+    
+<style>
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+.container {
+	display:flex;
+}
+.table-a,
+.table-b,
+.table-c {
+	display:inline-block;
+	border-collapse:collapse;
+	vertical-align:top;
+}
+.table-b {
+	margin-left:-1px;
+}
+.table-c {
+	margin-left:-1px;
+}
+.table-a th,
+.table-a td,
+.table-b th,
+.table-b td,
+.table-c th,
+.table-c td {
+	border:1px solid #ddd;
+	padding:4px;
+	vertical-align:top;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	overflow:hidden;
+}
+
+</style>
+
+</head>
+<body>
+        <!-- <table border = "1">
+                {% for i in urlrank: %}
+                <tr>
+                    <td><a href = {{i}}>{{ i }}</a></td>
+                </tr>		
+                {% endfor %}
+        </table>
+        <table border = "1">
+            {% for i in rank1: %}
+            <tr>
+                {% if i[1] != "NOT FOUND" : %}
+                <td> {{"%.4f"% i[1] }} </td>
+                {%else:%}
+                <td>{{ i[1] }}</td>
+                {% endif %}
+            </tr>		
+            {% endfor %}
+    </table>
+    <table border = "1">
+            {% for i in range(1,rank+1): %}
+            <tr>
+                <td>{{ i }}</td>
+            </tr>		
+            {% endfor %}
+    </table> -->
+
+    <div class="container">
+            <table class="table-a">
+                <thead>
+                <tr>
+                    <th>Rank</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for i in urlrank: %}
+                <tr>
+                    <td><a href = {{i}}>{{ i }}</a></td>
+                </tr>		
+                {% endfor %}
+                </tbody>
+            </table>
+            <table class="table-b">
+                <thead>
+                <tr>
+                    <th>Tf-Idf</th>
+                </tr>
+                </thead>
+                <tbody>
+                        {% for i in rank1: %}
+                        <tr>
+                            {% if i[1] != "NOT FOUND" : %}
+                            <td> {{"%.4f"% i[1] }} </td>
+                            {%else:%}
+                            <td>{{ i[1] }}</td>
+                            {% endif %}
+                        </tr>		
+                        {% endfor %}
+                </tbody>
+            </table>
+            <table class="table-c">
+                    <thead>
+                    <tr>
+                        <th>URL</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                            {% for i in urlrank: %}
+                            <tr>
+                                <td><a href = {{i}}>{{ i }}</a></td>
+                            </tr>		
+                            {% endfor %}
+                    </tbody>
+                </table>
+        </div>
+        
+
+</body>
+</html>
+        

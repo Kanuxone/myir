@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Positional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+<style>
+
+table th tbody{
+  text-align: center;
+}
+
+</style>
+
+</head>
+
+<body>
+        <section class="section">
+                 <div class="container">
+                      <div class="notification is-primary">
+                           <h1 class="title">Your word is : {{word}}</h1>
+                       </div>
+                     <table class="table is-fullwidth">
+                         <thead>
+                           <tr>
+                             <th scope='col'>Word</th>
+                             <th scope='col'>Count</th>
+                             <th scope='col'>Inverted Index</th>
+                           </tr>
+                         </thead>
+                         <tbody>  
+                            {% for row in result %}
+                            <tr>
+                                <td>{{row.word}}</td>
+                                <td>{{row.value}}</td>
+                                <td>{{row.file}}</td>             
+                            </tr>
+                            {% endfor %}
+                         </tbody>
+                    </table>
+                    
+                 </div>
+   
+               </div>
+   
+     </section>
+   </body>
+   </html>
+   
+     </section>
+   </body>
+   </html>

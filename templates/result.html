@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Result</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: center;
+  padding: 8px;
+}
+
+th {
+  background-color: white;
+  color: white;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+
+body {
+  background: whitesmoke; 
+  cursor: pointer;
+}
+h1 {
+  cursor: pointer;
+}
+
+
+</style>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-default" align="center">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="{{ url_for('hello') }}">UP TO YOU</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li><a href="{{ url_for('hello') }}">Home</a></li>
+            <li class="active"><a href="#">Result</a></li>
+          </ul>
+        </div>
+      </nav>
+
+     <section class="section">
+
+              <div class="container">
+
+                  <div class="notification is-primary">
+                      <h1 class="title">Your word is :</h1>
+                      <h1 class="subtitle">{{ word }}</h1>
+                  </div>
+                  <div class="notification is-primary">
+                      <h1 class="title">เวลาของแต่ละ Algorithm</h1>
+                      <h1 class="subtitle">Date start : {{dateStart}}</h1>
+                      <h1 class="subtitle">Date stop : {{dateEnd}}</h1>
+                      <h1 class="subtitle">Time Inverted : {{timeInV}} Nano Time</h1>
+                      <h1 class="subtitle">Time Positional : {{timePos}} Nano Time</h1>
+                      <h1 class="subtitle">Time Binary Search Tree : {{timeBi}} Nano Time</h1>
+                      <h1 class="subtitle">Time HashTable : {{timeHash}} Nano Time</h1>
+                      <h1 class="subtitle">Size : {{size}}</h1>
+                    </div>
+                  <table class="table is-fullwidth is-hoverable resultTable is-bordered">
+                      <thead>
+                        <tr>
+                          <th>Word</th>
+                          <th>Count</th>
+                          <th>Inverted Index</th>
+                          <th>Position Index</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for row in result %}
+                      <tr>
+                          <td>{{row.word}}</td>
+                          <td>{{row.value}}</td>
+                          <td>{{row.file}}</td>
+                          {% if row.value != None %}
+                            <td> <a href="{{url_for('showPosition',word=row.word)}}" type="button" class="btn btn-outline-success">Position</a>
+                          {% endif %}
+                      </tr>
+                      {% endfor %}
+
+                      <div class="notification is-primary">
+                        <h1 class="title">The Intersection is:</h1>
+                        <h1 class="subtitle">{{ inter }}</h1>
+                      </div>
+                      </tbody>
+                 </table>
+
+                 <!-- <script>
+                    var color = ["#f3a683","#f7d794","#fad390",
+                        "#82ccdd","#b8e994","#786fa6","#f8a5c2",
+                        "#63cdda","#ea8685","#f8c291","#f19066",
+                        "#f5cd79","#f78fb3","#3dc1d3",
+                          "#f3a683","#f7d794","#fad390",
+                        "#82ccdd","#b8e994","#786fa6","#f8a5c2",
+                        "#63cdda","#ea8685","#f8c291","#f19066",
+                        "#f5cd79","#f78fb3","#3dc1d3"];
+                    var i = 0;
+                    document.querySelector("body").addEventListener("click",
+                        function()
+                        {
+                            i = 1 < color.length ? ++i : 0;
+                            document.querySelector("body").style.background = color[i]
+                            // document.querySelector("table").style.background = color[i]
+                        })
+                  </script> -->
+
+              </div>
+
+            </div>
+
+            <div align="center" class="row-fluid">
+            <form action="http://35.198.244.246/Rank" method="POST">
+              <input id="search" type="hidden" name="word" value="{{word}}"/>
+              <input class="btn btn-success navbar-btn" type="submit" value="Rank" onClick="this.form.action='http://35.198.244.246/Rank'; submit()" formmethod="post">
+            </form>
+          </div>
+
+
+  </section>
+
+  
+
+</body>
+</html>

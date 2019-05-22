@@ -1,0 +1,160 @@
+<html>
+<head>
+    <title>Rank</title>
+    
+	<meta charset="UTF-8">
+    <title>Result</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<style>
+table th tbody {
+  text-align: center;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: whitesmoke; 
+  cursor: pointer; 
+}
+.container {
+	display:flex;
+}
+.table-a,
+.table-b,
+.table-c {
+	display:inline-block;
+	border-collapse:collapse;
+	vertical-align:top;
+}
+.table-b {
+	margin-left:-1px;
+}
+.table-c {
+	margin-left:-1px;
+}
+.table-a th,
+.table-a td,
+.table-b th,
+.table-b td,
+.table-c th,
+.table-c td {
+	border:1px solid #ddd;
+	padding:4px;
+	vertical-align:top;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	overflow:hidden;
+}
+
+th, td {
+  text-align: center;
+  padding: 8px;
+}
+
+th,tr {
+  background-color: white;
+
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+
+h1 {
+    text-align: center;
+    color: white;
+}
+
+</style>
+
+</head>
+<body>
+        
+        <nav class="navbar navbar-default" align="center">
+                <div class="container-fluid">
+                  <div class="navbar-header">
+                    <a class="navbar-brand" href="{{ url_for('hello') }}">UP TO YOU</a>
+                  </div>
+                  <ul class="nav navbar-nav">
+                    <li><a href="{{ url_for('hello') }}">Home</a></li>
+                    <li><a onclick="goBack()">Result</a></li>
+                    <li class="active"><a href="#">Rank</a></li>
+                    <script>
+                        function goBack() {
+                          window.history.back();
+                        }
+                    </script>
+                  </ul>
+                </div>
+              </nav>
+
+              
+
+              <section class="section">
+
+                  <div class="notification is-primary">
+                      <h1 class="title">Your word is :</h1>
+                      <h1 class="subtitle">{{ word }}</h1>
+                  </div>
+
+              <div class="container">
+                    <table class="table-a">
+                        <thead>
+                        <tr>
+                            <th>Rank</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in range(1,rank+1): %}
+                        <tr>
+                            <td>{{ i }}</td>
+                        </tr>		
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <table class="table-b">
+                        <thead>
+                        <tr>
+                            <th>Tf-Idf</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                                {% for i in rank1: %}
+                                <tr>
+                                    {% if i[1] != "NOT FOUND" : %}
+                                    <td> {{"%.4f"% i[1] }} </td>
+                                    {%else:%}
+                                    <td>{{ i[1] }}</td>
+                                    {% endif %}
+                                </tr>		
+                                {% endfor %}
+                        </tbody>
+                    </table>
+                    <table class="table-c">
+                            <thead>
+                            <tr>
+                                <th>URL</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                    {% for i in urlrank: %}
+                                    <tr>
+                                        <td><a href = {{i}}>{{ i }}</a></td>
+                                    </tr>		
+                                    {% endfor %}
+                            </tbody>
+                        </table>
+                </div>
+
+
+</section>
+    
+        
+
+</body>
+</html>

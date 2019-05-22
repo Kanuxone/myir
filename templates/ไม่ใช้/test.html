@@ -1,0 +1,32 @@
+<html>
+<head>
+	<title> RESULT form TU </title>
+	
+</head>
+<body>
+    <h1> Word : {{word}} </h1>
+    <form action ="{{ url_for('wild') }}" method="POST">
+    <center>
+        <select name="wild">
+        {% for i in listword:%}
+        <option value= {{ i }}>{{i}} </option>
+        {% endfor %}
+        <input type="submit" value="Submit">
+        </select>
+    </center></form>
+
+
+    <table border = "1">
+            {% for i in urlfil: %}
+            <tr>
+                <td><a href = {{i}}>{{ i }}</a></td>
+            </tr>		
+            {% endfor %}
+    </table>
+
+
+
+
+</body>
+</html>
+        

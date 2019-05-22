@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Positional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<style>
+
+table th tbody{
+  text-align: center;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: whitesmoke; 
+  cursor: pointer; 
+}
+
+</style>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-default" align="center">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="{{ url_for('hello') }}">UP TO YOU</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li><a href="{{ url_for('hello') }}">Home</a></li>
+            <li><a onclick="goBack()">Result</a></li>
+            <li class="active"><a href="#">Positional</a></li>
+            <script>
+                function goBack() {
+                  window.history.back();
+                }
+            </script>
+          </ul>
+        </div>
+      </nav>
+
+
+        <section class="section">
+                 <div class="container">
+                      <div class="notification is-primary">
+                           <h1 class="title">Position of your word : {{word}}</h1>
+                       </div>
+                     <table class="table is-fullwidth">
+                         <thead>
+                           <tr>
+                             <th scope='col'>Inverted Index</th>
+                             <th scope='col'>Position Index</th>
+                           </tr>
+                         </thead>
+                         <tbody>  
+                             {% for row in range(position|length) %}
+                             <tr>
+                                 <td>{{position[row][0]}}</td> 
+                                 <td>
+                                 {% for line in range(position[row]|length-1) %}        
+                                     {{position[row][line+1]}}
+                                 {% endfor %}   
+                               </td>                                                        
+                             </tr>
+                             {% endfor %}
+                         </tbody>
+                    </table>
+                    
+                 </div>
+   
+               </div>
+   
+     </section>
+   </body>
+   </html>
+   
+     </section>
+   </body>
+   </html>
